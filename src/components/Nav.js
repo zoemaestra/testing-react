@@ -1,30 +1,29 @@
-import Intro from './components/Intro'
-import Footer from './components/Footer'
-import MoagCoin from './components/moagCoin'
-import Timetable from './components/Timetable'
-import DiscordBot from './components/DiscordBot'
-import Nav from './components/Nav'
-
-import './App.css';
-import homeIcon from './images/icon.png';
-import {BrowserRouter as Router, Route} from 'react-router-dom'
+import homeIcon from '../images/icon.png';
 import { useState, useEffect } from 'react';
 
-function App() {
+const Nav = () => {
+  const toggleMobileNav = () => {
+    document.getElementById("menuToggler").classList.toggle("open");
+    document.getElementById("menu").classList.toggle("open");
+  }
+
   let [bgcolour, setbgcolour] = useState(localStorage.getItem("Theme"))
   let [fgcolour, setfgcolour] = useState("")
   let [navcolour, setnavcolour] = useState("")
   let [emoji, setEmoji] = useState("🌑")
 
   const themeSet = (theme) => {
+    //Function to set the CSS colour variables used for background, foreground and nav background
     if (theme == "#171720") {
       bgcolour = "#171720";
       fgcolour = "#E8E8DF";
       navcolour = "#2B2B3B";
+      setEmoji("☀️")
     } else {
       bgcolour = "#E8E8DF";
       fgcolour = "#171720";
       navcolour = "#171720";
+      setEmoji("🌑")
     }
     document.documentElement.style.setProperty("--bg-colour", bgcolour);
     document.documentElement.style.setProperty("--fg-colour", fgcolour);
@@ -43,22 +42,24 @@ function App() {
     }
   }
 
-  const images = require.context('./images', true);
+  const images = require.context('../images', true);
   let loadImage = imageName => (images(`./${imageName}`).default);
 
-    return (
-      <Router>
-        <div className="App">
-          <a id="top"></a>
-          <Nav />
-          <Route path="/" exact component={Intro} />
-          <Route path="/MoagCoin" component={MoagCoin} />
-          <Route path="/Timetable" component={Timetable} />
-          <Route path="/DiscordBot" component={DiscordBot} />
-          <Footer />
-      </div>
-    </Router>
-  );
+  return (
+    <div>
+    <div id="mobileHead">
+      <a className="homeButton" href="/"><img src={homeIcon} alt="Home" /></a>
+    </div>
+    <div id="menuToggler" onClick={toggleMobileNav}>&#8801;</div>
+      <nav id="menu">
+        <a className="homeButton" href="/"><img src={homeIcon} alt="Home" /></a>
+        <a href="/MoagCoin">MoagCoin</a>
+        <a href="/Timetable">Timetable</a>
+        <a href="/DiscordBot">Discord Bot</a>
+        <div id="themeToggler" onClick={themeButtonOnclick}>{emoji}</div>
+      </nav>
+    </div>
+  )
 }
 
-export default App;
+export default Nav

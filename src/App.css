@@ -1,38 +1,363 @@
-.App {
+/* MOBILE AND GLOBAL STYLES */
+/* applies to screens smaller than 500px (first breakpoint) */
+/* and above unless overwritten below */
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-colour);
+  color: var(--fg-colour);
+  font-family: Poppins;
+  margin: 0 0;
+  width: 100%;
+  height: 100%;
+  transition: 1s;
+}
+
+:root {
+  --bg-colour: #e8e8df;
+  --fg-colour: #171720;
+  --nav-colour: #171720;
+}
+
+#mobileHead {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background-color: var(--nav-colour);
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  z-index: 998;
+  transition: 1s;
+}
+
+#mobileHead img {
+  width: 70px;
+  height: 70px;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 90px;
+  width: 100%;
+  transform: translateX(100%);
+  transition: 0.54s;
+  z-index: 999;
+}
+
+nav a,
+#themeToggler {
+  background-color: #ff0070;
+  color: white;
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 40px;
+  text-decoration: none;
+  font-size: 24px;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+nav a:hover,
+#themeToggler:hover {
+  background-color: #ff7070;
+  color: white;
+  transition: background-color 0.4s;
+}
+
+nav.open {
+  display: flex;
+  transform: translateX(30%);
+}
+
+nav img {
+  display: none;
+}
+
+header {
+  text-align: center;
+  position: relative;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 120px;
+}
+header img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+}
+header h1 {
+  font-weight: 600;
+  letter-spacing: -2px;
+  font-size: 3em;
+  color: var(--fg-colour);
+  transition: 1s;
+}
+header a {
+  color: var(--fg-colour);
+  transition: 1s;
+}
+
+#buildstatus {
+  width: auto;
+  height: auto;
+  border-radius: 0%;
+}
+
+h1 {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h3 a {
+  text-decoration: none;
+  color: var(--fg-colour);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+p {
+  margin: 10px 10px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#menuToggler {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  width: 100%;
+  position: fixed;
+  flex-shrink: 0;
+  background-color: #ff0070;
+  color: white;
+  padding: 5px 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
+  text-decoration: none;
+  font-size: 40px;
+  top: 0;
+  z-index: 1;
+  transform: translateX(calc(100% - 120px));
+  transition: 0.54s;
+  z-index: 999;
+}
+
+#menuToggler:hover {
+  background-color: #ff5060;
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+#menuToggler.open {
+  /*transform: translateX(58vw);*/
+  transform: translateX(calc(30% - 5px));
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.homeButton {
+  width: 0;
+  height: 0;
+  padding: 0 0;
+  margin: 0 0;
+}
+
+section {
+  margin: auto;
+  width: 90vw;
+  align-items: center;
+  padding: 10px;
+  border-top: 1px solid var(--fg-colour);
+}
+
+section h3 {
+  text-align: center;
+}
+
+section h2 {
+  text-align: center;
+}
+
+#gallery {
+  display: flex;
+  flex-direction: row;
+  height: 300px;
+  border-top: 0px solid var(--bg-colour);
+  transition: 1s;
+  padding: 0;
+  padding-bottom: 50px;
+}
+
+#gallery button {
+  background-color: var(--bg-colour);
+  color: var(--fg-colour);
+  border: 0;
+  border-radius: 40px;
+  height: 100%;
+  width: 10px;
+  font-size: 25px;
+  transition: 1s;
+  padding: 0;
+  outline: none;
+}
+
+#gallery img {
+  animation: imagefade 1s linear forwards;
+  display: block;
+  max-width: 75vw;
+  max-height: 350px;
+  width: auto;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+}
+
+@keyframes imagefade {
+  0% {
+    opacity: 0;
   }
-  to {
-    transform: rotate(360deg);
+  100% {
+    opacity: 1;
+  }
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  background-color: var(--nav-colour);
+  color: #e8e8df;
+  padding: 1px 1px;
+  transition: 1s;
+}
+
+footer a {
+  margin-left: auto;
+  text-decoration: none;
+  color: #e8e8df;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 20px;
+}
+
+span,
+span a {
+  color: #ff0070;
+  text-decoration: none;
+}
+
+/* TABLET AND DESKTOP STYLES */
+/* applies to screens wider than 499px */
+@media screen and (min-width: 500px) {
+  #menuToggler {
+    display: none;
+  }
+  nav {
+    display: flex;
+    position: fixed;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin: 0px 0px;
+    padding: 10px 0px;
+    width: 100%;
+    top: 0;
+    transform: none;
+    transition: 1s;
+    background-color: var(--nav-colour);
+  }
+  nav a,
+  #themeToggler {
+    font-size: 16px;
+    padding: 10px 8px;
+    margin: 5px;
+  }
+  nav img {
+    display: inherit;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    transition: box-shadow 0.2s ease-in-out;
+  }
+  nav img:hover {
+    box-shadow: 0px 0px 20px #ff0070;
+  }
+  #mobileHead {
+    display: none;
+  }
+  header {
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+  section img {
+    max-height: 350px;
+  }
+  #gallery {
+    height: 550px;
+  }
+  #gallery button {
+    width: 5vw;
+  }
+  #gallery img {
+    max-width: 100%;
+    max-height: 550px;
+  }
+}
+
+/* DESKTOP STYLES */
+/* applies to screens wider than 999px*/
+@media screen and (min-width: 1000px) {
+  .header {
+    align-items: center;
+  }
+  #menuToggler {
+    display: none;
+  }
+  nav {
+    display: flex;
+    position: fixed;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin: 0px 0px;
+    padding: 10px 0px;
+    width: 100%;
+    top: 0;
+    transform: none;
+    transition: 1s;
+    background-color: var(--nav-colour);
+  }
+  nav a,
+  #themeToggler {
+    font-size: 18px;
+    padding: 10px 25px;
+    margin: 5px;
+  }
+  nav img {
+    display: inherit;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+  }
+  header {
+    text-align: center;
+    position: relative;
+    margin: auto;
+    margin-top: 120px;
+    width: 50vw;
+  }
+  #mobileHead {
+    display: none;
+  }
+  section {
+    width: 50vw;
+  }
+  section img {
+    margin-top: 5px;
+    max-height: 450px;
   }
 }
