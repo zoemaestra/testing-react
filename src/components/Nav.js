@@ -39,8 +39,6 @@ const Nav = () => {
 
   useEffect(() => {
     themeSet(bgcolour)
-    themeSet(bgcolour)
-    themeSet(bgcolour)
   }, []);
 
   useEffect(() => {
