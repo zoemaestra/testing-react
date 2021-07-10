@@ -1,5 +1,5 @@
 import homeIcon from '../images/icon.png';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const Nav = () => {
   const toggleMobileNav = () => {
@@ -7,7 +7,7 @@ const Nav = () => {
     document.getElementById("menu").classList.toggle("open");
   }
 
-  let [bgcolour, setbgcolour] = useState(localStorage.getItem("Theme"))
+  let [bgcolour, setbgcolour] = useState(localStorage.getItem("Theme") || '#171720')
   let [fgcolour, setfgcolour] = useState("")
   let [navcolour, setnavcolour] = useState("")
   let [emoji, setEmoji] = useState("🌑")
@@ -29,18 +29,23 @@ const Nav = () => {
     document.documentElement.style.setProperty("--fg-colour", fgcolour);
     document.documentElement.style.setProperty("--nav-colour", navcolour);
     localStorage.setItem("Theme", bgcolour);
-    console.log("hhhhhhhhh")
   };
 
   const themeButtonOnclick = () => {
-    if (bgcolour === "#171720") {
-      themeSet("#E8E8DF");
-      /*setEmoji("☀️")*/
-    } else {
-      themeSet("#171720");
-      /*setEmoji("🌑")*/
-    }
+    if (bgcolour === "#E8E8DF"){ themeSet("#171720") }
+    else { themeSet("#E8E8DF") }
   }
+
+
+  useEffect(() => {
+    themeSet(bgcolour)
+    themeSet(bgcolour)
+    themeSet(bgcolour)
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('Theme', bgcolour);
+  }, [bgcolour]);
 
   return (
     <div>
