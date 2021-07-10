@@ -1,5 +1,5 @@
 import homeIcon from '../images/icon.png';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const Nav = () => {
   const toggleMobileNav = () => {
@@ -14,15 +14,15 @@ const Nav = () => {
 
   const themeSet = (theme) => {
     //Function to set the CSS colour variables used for background, foreground and nav background
-    if (theme == "#171720") {
-      bgcolour = "#171720";
-      fgcolour = "#E8E8DF";
-      navcolour = "#2B2B3B";
+    if (theme === "#171720") {
+      setbgcolour("#171720")
+      setfgcolour("#E8E8DF")
+      setnavcolour("#2B2B3B")
       setEmoji("☀️")
     } else {
-      bgcolour = "#E8E8DF";
-      fgcolour = "#171720";
-      navcolour = "#171720";
+      setbgcolour("#E8E8DF")
+      setfgcolour("#171720")
+      setnavcolour("#171720")
       setEmoji("🌑")
     }
     document.documentElement.style.setProperty("--bg-colour", bgcolour);
@@ -33,7 +33,7 @@ const Nav = () => {
   };
 
   const themeButtonOnclick = () => {
-    if (bgcolour == "#171720") {
+    if (bgcolour === "#171720") {
       themeSet("#E8E8DF");
       /*setEmoji("☀️")*/
     } else {
@@ -41,9 +41,6 @@ const Nav = () => {
       /*setEmoji("🌑")*/
     }
   }
-
-  const images = require.context('../images', true);
-  let loadImage = imageName => (images(`./${imageName}`).default);
 
   return (
     <div>

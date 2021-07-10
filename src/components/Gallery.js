@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types'
 
 
@@ -9,11 +9,11 @@ const Gallery = (props) => {
   let loadImage = imageName => (images(`./${props.images.toLowerCase()}/${imageName}`).default);
 
   const onClick = () => {
-    if (imgNo == 1){
+    if (imgNo === 1){
       document.getElementById("galleryImg").src = loadImage("2.png")
       setImgNo(2)
     }
-    if (imgNo == 2){
+    if (imgNo === 2){
       document.getElementById("galleryImg").src = loadImage("1.png")
       setImgNo(1)
     }
@@ -25,7 +25,7 @@ const Gallery = (props) => {
       <h2>Gallery</h2>
       <section id="gallery">
         <button className="btn" onClick={onClick}>{'\u276E'}</button>
-        <img id="galleryImg" src={loadImage("1.png")} />
+        <img id="galleryImg" src={loadImage("1.png")} alt="Gallery" />
         <button className="btn" onClick={onClick}>{'\u276F'}</button>
       </section>
     </section>

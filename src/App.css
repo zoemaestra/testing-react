@@ -231,7 +231,7 @@ footer {
   transition: 1s;
 }
 
-footer a {
+#scrollTop {
   margin-left: auto;
   text-decoration: none;
   color: #e8e8df;
