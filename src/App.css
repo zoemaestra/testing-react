@@ -49,20 +49,19 @@ nav {
   z-index: 999;
 }
 
-nav a,
-#themeToggler {
+nav a, #themeToggler, .button {
   background-color: #ff0070;
   color: white;
   padding: 10px 20px;
   margin: 10px;
   border-radius: 40px;
+  border: none;
   text-decoration: none;
   font-size: 24px;
   transition: box-shadow 0.2s ease-in-out;
 }
 
-nav a:hover,
-#themeToggler:hover {
+nav a:hover,#themeToggler:hover, .button:hover {
   background-color: #ff7070;
   color: white;
   transition: background-color 0.4s;

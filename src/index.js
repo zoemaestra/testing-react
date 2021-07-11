@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { ChainId, DAppProvider, useEtherBalance, useEthers } from '@usedapp/core'
+import { ChainId, DAppProvider } from '@usedapp/core'
 
 const config: Config = {
   readOnlyChainId: ChainId.Mainnet,
   readOnlyUrls: {
-    [ChainId.Mainnet]: 'https://mainnet.infura.io/v3/d93ff51d9e024a97b49707677a22aaa1',
+    [ChainId.Mainnet]: 'https://ropsten.infura.io/v3/d93ff51d9e024a97b49707677a22aaa1',
   },
 }
 
