@@ -7,9 +7,9 @@ const Nav = () => {
     document.getElementById("menu").classList.toggle("open");
   }
 
-  let [bgcolour, setbgcolour] = useState(localStorage.getItem("Theme") || '#171720')
-  let [fgcolour, setfgcolour] = useState("")
-  let [navcolour, setnavcolour] = useState("")
+  let [bgcolour, setbgcolour] = useState(localStorage.getItem("bgcolour") || '#171720')
+  let [fgcolour, setfgcolour] = useState(localStorage.getItem("fgcolour") || '#E8E8DF')
+  let [navcolour, setnavcolour] = useState(localStorage.getItem("navcolour") || '#2B2B3B')
   let [emoji, setEmoji] = useState("🌑")
 
   const themeSet = (theme) => {
@@ -28,16 +28,20 @@ const Nav = () => {
     document.documentElement.style.setProperty("--bg-colour", bgcolour);
     document.documentElement.style.setProperty("--fg-colour", fgcolour);
     document.documentElement.style.setProperty("--nav-colour", navcolour);
-    localStorage.setItem("Theme", bgcolour);
+    localStorage.setItem("bgcolour", bgcolour);
+    localStorage.setItem("fgcolour", fgcolour);
+    localStorage.setItem("navcolour", navcolour);
   };
 
   const themeButtonOnclick = () => {
+    console.log(bgcolour,fgcolour,navcolour)
     if (bgcolour === "#E8E8DF"){ themeSet("#171720") }
-    else { themeSet("#E8E8DF") }
+    if (bgcolour === "#171720"){ themeSet("#E8E8DF") }
   }
 
 
   useEffect(() => {
+    console.log(bgcolour,fgcolour,navcolour)
     themeSet(localStorage.getItem("Theme"))
   }, []);
 
