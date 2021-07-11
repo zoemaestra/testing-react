@@ -38,12 +38,12 @@ const Nav = () => {
 
 
   useEffect(() => {
-    /*themeSet(bgcolour)*/
+    themeSet(localStorage.getItem("Theme"))
   }, []);
 
-  useEffect(() => {
+  /*useEffect(() => {
     localStorage.setItem('Theme', bgcolour);
-  }, [bgcolour]);
+  }, [bgcolour]);*/
 
   return (
     <div>

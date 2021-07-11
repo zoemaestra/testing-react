@@ -5,7 +5,6 @@ const Footer = () => {
   return (
     <div>
     <footer>
-      <p>© Zoe Jones 2021</p>
       <div id="scrollTop" onClick={scrollTopFunction}>Back to top</div>
     </footer>
     </div>
