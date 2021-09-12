@@ -34,13 +34,25 @@ const Intro = () => {
     return allowance
   }
 
-  const { activateBrowserWallet, account } = useEthers()
+  const { activateBrowserWallet, account, chainId } = useEthers()
   const etherBalance = useTokenBalance(account)
   const { sendTransaction, state } = useSendTransaction()
 
   const { state_, send } = useContractFunction(contract, 'transfer')
   const transferToken = (receiver: string, numTokens: string) => {
     send(receiver, parseEther(numTokens))
+  }
+
+  function safeTransaction(to, value) {
+    console.log(chainId)
+    if (chainId != 3) {console.log("METAMASK MUST BE ON ROPSTEN")}
+    else { sendTransaction({ to: to, value: value }) }
+  }
+
+  function safeTransferToken(to, value) {
+    console.log(chainId)
+    if (chainId != 3) {console.log("METAMASK MUST BE ON ROPSTEN")}
+    else { transferToken({ to: to, value: value }) }
   }
 
   return (
@@ -56,10 +68,10 @@ const Intro = () => {
             <button className='button' onClick={() => activateBrowserWallet()}>Connect</button>
           </div>
           <div>
-            <button className='button' onClick={() => sendTransaction({ to: '0x0000000000000000000000000000000000000000', value: parseEther('0.009') })}>Send ether</button>
+            <button className='button' onClick={() => safeTransaction('0x0000000000000000000000000000000000000000', parseEther('0.009'))}>Send ether</button>
           </div>
           <div>
-            <button className='button' onClick={() => transferToken('0xe065cC27EE71e73F0d19bf190f3B81bB9Ef4E097','5')}>Send shit</button>
+            <button className='button' onClick={() => safeTransferToken('0xe065cC27EE71e73F0d19bf190f3B81bB9Ef4E097','5')}>Send shit</button>
           </div>
           {account && <p>Account: {account}</p>}
           {etherBalance && <p>Balance: {formatEther(etherBalance)} moagCoins</p>}
